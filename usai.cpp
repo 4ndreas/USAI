@@ -330,12 +330,12 @@ void uValue::setMinMax()
 		}
 		case _int:
 		{
-			setMinMax(0,1024);
+			setMinMax(0,1023);
 			break;
 		}
 		case _long:
 		{
-			setMinMax(-4096,4096);
+			setMinMax(-4095,4095);
 			break;
 		}
 		case _float:
