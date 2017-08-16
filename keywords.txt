@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map Universal Sensor Actor Interface (USAI)
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+usai	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+addValue	KEYWORD2
+begin	KEYWORD2
+processSensorData	KEYWORD2
+setMinMax KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+details	LITERAL1
