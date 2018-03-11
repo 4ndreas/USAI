@@ -94,6 +94,10 @@ void usai::processInput()
 						if (rxName.equals(_sValues[i]->_name))
 						{
 							_sValues[i]->setValue(inputString.substring(inputString.indexOf(':')+1));
+							
+							if(_sValues[i]->callback != 0){
+								_sValues[i]->callback();
+							}
 						}
 					}
 				}
@@ -213,12 +217,15 @@ void usai::processConfig(int _nr)
 
 }
 
+
+
 uValue::uValue(const char * Name, cmdType Type, void * PTR, dataType DataType/*=_void*/)
 {
 	_cmd = Type;
 	_dataType = DataType;
 	_ptr = PTR;
 	_name = Name;
+	callback = 0;
 }
 
 uValue::uValue(const char * Name, cmdType _Type, boolean *ptr)
@@ -246,11 +253,22 @@ uValue::uValue(const char * Name, cmdType _Type, float *ptr)
 	setValue(Name,_Type,ptr,_float);
 }
 
+uValue::uValue(const char * Name, cmdType _Type, double *ptr)
+{
+	setValue(Name,_Type,ptr,_float);
+}
+
+
 uValue::uValue(const char * Name, cmdType _Type, uint32_t *ptr)
 {
 	setValue(Name,_Type,ptr,_color);
 }
 
+void uValue::setCallback(voidFuncPtr handler)
+//void uValue::setCallback( void * cb(void))
+{
+	callback = handler;
+}
 
 void uValue::setValue(const char * Name, cmdType Type, void *PTR, dataType DataType/*=_void*/)
 {
@@ -295,6 +313,7 @@ void uValue::setValue(String val)
 			*_valueptr = val.toFloat();
 			break;
 		}
+
 		case _color:
 		{
 			uint32_t * _valueptr = static_cast<uint32_t*>(_ptr);

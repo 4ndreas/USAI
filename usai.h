@@ -19,7 +19,7 @@
 #ifdef ARDUINO_ARCH_ESP8266
 #include <WiFiUDP.h>
 #endif
-#define CMDBUFFERSIZE 20
+#define CMDBUFFERSIZE 40
 #define CHARBUFFERSIZE 50
 
 enum connectionType
@@ -62,6 +62,7 @@ class uValue
 	uValue(const char * Name, cmdType _Type, int *ptr);
 	uValue(const char * Name, cmdType _Type, long *ptr);
 	uValue(const char * Name, cmdType _Type, float *ptr);
+	uValue(const char * Name, cmdType _Type, double *ptr);
 	uValue(const char * Name, cmdType _Type, uint32_t *ptr);
 	
 
@@ -76,6 +77,9 @@ class uValue
 	void setValue(const char * Name, cmdType Type, void *PTR, dataType DataType=_void);
 	void setMinMax();
 	void setMinMax(int min, int max);
+
+	voidFuncPtr callback;
+	void setCallback(voidFuncPtr handler);
 };
 
 class usai
@@ -101,6 +105,7 @@ class usai
 	void processConfig(int _nr);
 	void processControl(int _nr);
 	void printValue(int _nr);
+	void noOp(void);
 
 	connectionType _connectionType;
 	Stream * _serial;
