@@ -264,8 +264,7 @@ uValue::uValue(const char * Name, cmdType _Type, uint32_t *ptr)
 	setValue(Name,_Type,ptr,_color);
 }
 
-void uValue::setCallback(voidFuncPtr handler)
-//void uValue::setCallback( void * cb(void))
+void uValue::setCallback(void (*handler)())
 {
 	callback = handler;
 }

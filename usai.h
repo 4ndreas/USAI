@@ -78,8 +78,9 @@ class uValue
 	void setMinMax();
 	void setMinMax(int min, int max);
 
-	voidFuncPtr callback;
-	void setCallback(voidFuncPtr handler);
+	void (*callback)();
+	void setCallback(void (*handler)());
+
 };
 
 class usai
