@@ -14,7 +14,7 @@ usai	KEYWORD1
 addValue	KEYWORD2
 begin	KEYWORD2
 processSensorData	KEYWORD2
-setMinMax KEYWORD2
+setMinMax	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
