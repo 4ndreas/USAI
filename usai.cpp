@@ -44,6 +44,12 @@ int usai::addValue(uValue *val)
 	return(_sensorNumber -1);
 }
 
+int usai::addValue(uValue *val, int min, int max)
+{
+	val->setMinMax(min, max);
+	return(addValue(val));
+}
+
 void usai::setSampletime(uint32_t stime)
 {
 	sampletime = stime;
@@ -291,6 +297,10 @@ void usai::processControl(int _nr)
 
 void usai::processConfig(int _nr)
 {
+	_serial->print(_sValues[_nr]->_name);
+	_serial->print(":");
+	printValue(_nr);
+	_serial->println("");	
 }
 
 uValue::uValue(const char *Name, cmdType Type, void *PTR, dataType DataType /*=_void*/)

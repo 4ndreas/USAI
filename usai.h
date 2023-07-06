@@ -111,6 +111,7 @@ class usai
 	void begin();
 	void processSensorData();
 	int addValue(uValue * val);
+	int addValue(uValue * val, int min, int max);
 	void sendConfig();
     void setSampletime(uint32_t stime);
 
